@@ -1,0 +1,58 @@
+[
+  {
+    "name": "login",
+    "path": "/login",
+    "component": "/Users/tariqali/projects/register-admin/pages/login.vue",
+    "chunkName": "pages/login",
+    "_name": "_5d2eb5ba"
+  },
+  {
+    "name": "orders",
+    "path": "/orders",
+    "component": "/Users/tariqali/projects/register-admin/pages/orders/index.vue",
+    "chunkName": "pages/orders/index",
+    "_name": "_faa95444"
+  },
+  {
+    "name": "reports",
+    "path": "/reports",
+    "component": "/Users/tariqali/projects/register-admin/pages/reports/index.vue",
+    "chunkName": "pages/reports/index",
+    "_name": "_6d2a73bc"
+  },
+  {
+    "name": "students",
+    "path": "/students",
+    "component": "/Users/tariqali/projects/register-admin/pages/students/index.vue",
+    "chunkName": "pages/students/index",
+    "_name": "_46a32551"
+  },
+  {
+    "name": "users",
+    "path": "/users",
+    "component": "/Users/tariqali/projects/register-admin/pages/users/index.vue",
+    "chunkName": "pages/users/index",
+    "_name": "_5084ad76"
+  },
+  {
+    "name": "students-add",
+    "path": "/students/add",
+    "component": "/Users/tariqali/projects/register-admin/pages/students/add/index.vue",
+    "chunkName": "pages/students/add/index",
+    "_name": "_786501e3"
+  },
+  {
+    "name": "students-profile-id",
+    "path": "/students/profile/:id?",
+    "component": "/Users/tariqali/projects/register-admin/pages/students/profile/_id.vue",
+    "chunkName": "pages/students/profile/_id",
+    "_name": "_733abe93"
+  },
+  {
+    "name": "index",
+    "path": "/",
+    "component": "/Users/tariqali/projects/register-admin/pages/index.vue",
+    "chunkName": "pages/index",
+    "_name": "_07c1020c"
+  }
+]
