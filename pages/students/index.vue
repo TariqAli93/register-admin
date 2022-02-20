@@ -300,6 +300,15 @@
                 item-color="accent"
               ></v-select>
             </v-col>
+
+            <v-col cols="12">
+              <v-textarea
+                v-model="certificateStatusDescription"
+                outlined
+                color="accent"
+                label="نص تصديق الوثيقة"
+              ></v-textarea>
+            </v-col>
           </v-row>
           <v-btn
             block
@@ -716,6 +725,7 @@ export default {
       graduationDate: '',
       searchStudentId: '',
       certificateStatusId: '',
+      certificateStatusDescription: '',
       selectCertificatesStatus: [],
       aprovDialog: false,
       headers: [
@@ -1472,6 +1482,7 @@ export default {
       try {
         const aprov = await this.$axios.put('manyStudentSchool', {
           certificateStatusId: this.certificateStatusId,
+          certificateStatusDescription: this.certificateStatusDescription,
           ids: this.studentSelected.map((student) => student.idStudent),
         })
 
