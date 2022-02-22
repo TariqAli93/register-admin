@@ -1,6 +1,7 @@
 export const state = () => ({
     stepper: 1,
     lastStudentRegistered: null,
+    studentDeleted: 1,
     orderTitels: [
         {
             "idOrderTitle": 1,
@@ -1135,16 +1136,24 @@ export const mutations = {
     set_last_student_id(state, idStudent) {
         return (state.lastStudentRegistered = idStudent)
     },
+
+    student_deleted(state) {
+        return (state.studentDeleted = state.studentDeleted + 1)
+    },
 }
 
 export const getters = {
     getLastStudentRegistered(state) {
         return state.lastStudentRegistered
+    },
+
+    getKeyComponent(state) {
+        return state.studentDeleted
     }
 }
 
 export const actions = {
     saveLastStudentId(context, idStudent) {
         context.commit('set_last_student_id', idStudent)
-    }
+    },
 }

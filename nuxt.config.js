@@ -28,7 +28,7 @@ export default {
   },
 
   server: {
-    port: 2000,
+    port: 2300,
     host: '0'
   },
 
@@ -61,7 +61,7 @@ export default {
     // baseURL: 'http://109.224.62.102:3100/api/',
 
     // mustafa local server
-    // baseURL: 'http://30.255.255.179:3100/api/',
+    // baseURL: 'http://10.0.1.182:3100/api/',
 
     // mustafa online server
     // baseURL: 'http://161.22.43.108:3600/api/',

@@ -1,5 +1,5 @@
 <template>
-  <div id="StudentsMainPage">
+  <div id="StudentsMainPage" :key="componentKey">
     <!-- تعميم الامر الاداري -->
     <v-dialog
       v-model="adminOrderDialog"
@@ -523,27 +523,6 @@
       <v-tooltip
         v-if="isStudentSelected && studentSelected.length > 0"
         bottom
-        color="error"
-        transition="slide-y-transition"
-      >
-        <template #activator="{ on, attrs }">
-          <v-btn
-            icon
-            color="error"
-            class="primary--text ml-3"
-            v-bind="attrs"
-            v-on="on"
-            @click="deleteStudent"
-          >
-            <v-icon>mdi-delete</v-icon>
-          </v-btn>
-        </template>
-        <span class="primary--text">حذف القيود</span>
-      </v-tooltip>
-
-      <v-tooltip
-        v-if="isStudentSelected && studentSelected.length > 0"
-        bottom
         color="accent"
         transition="slide-y-transition"
       >
@@ -714,10 +693,12 @@
 import _ from 'lodash'
 import moment from 'moment'
 import tableToExcel from '~/plugins/TableToExcel.js'
+import eventHub from '@/plugins/bus.js'
 export default {
   data() {
     return {
       studentsCount: 0,
+      componentKey: 1,
       search: '',
       loading: true,
       isLevelUpApi: false,
@@ -1043,6 +1024,14 @@ export default {
         return filterd
       }
     },
+
+    isDeleteStudent() {
+      return this.$store.state.studentDeleted
+    },
+
+    keyComponent() {
+      return this.$store.getters.getKeyComponent
+    },
   },
 
   watch: {
@@ -1081,6 +1070,12 @@ export default {
 
     this.$axios.get('certificatesStatus').then((status) => {
       this.selectCertificatesStatus = status.data
+    })
+  },
+
+  mounted() {
+    eventHub.$on('deletedStudents', () => {
+      this.componentKey = this.componentKey + this.componentKey
     })
   },
 
@@ -1456,26 +1451,6 @@ export default {
         'location=yes,height=1200,width=1500,scrollbars=yes,status=yes'
       )
       // this.$router.push(`/students/profile/${idStudent}`)
-    },
-
-    async deleteStudent() {
-      if (confirm('هل تريد حذف القيد ؟')) {
-        const { idStudent } = this.studentSelected[0]
-
-        try {
-          const deleteStudents = await this.$axios.delete(
-            `student/${idStudent}`
-          )
-
-          this.$toast.success('تم حذف القيد', {
-            duration: 3000,
-            position: 'top-center',
-          })
-          console.log(deleteStudents.data)
-        } catch (error) {
-          console.log(error)
-        }
-      }
     },
 
     async aprovTheCertificate() {
